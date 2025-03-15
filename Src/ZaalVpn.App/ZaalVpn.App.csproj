@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\Back button.png" />
+    <None Remove="Resources\Icons\Menu icon.png" />
+    <None Remove="Resources\Icons\Next button.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CustomControls\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
+    <Folder Include="Windows\" />
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Back button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Menu icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Next button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
