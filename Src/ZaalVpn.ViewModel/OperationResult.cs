@@ -27,9 +27,9 @@ public class OperationResult<T> : ResultModel
     }
 }
 
-public class ApiResponse<A> 
+public class ApiResponse<A>
 {
-    public string[]? Messages { get; set; }
+    public List<string> Messages { get; set; } = new();
     public A? Response { get; set; } = default;
     public bool Success { get; protected set; }
     public HttpStatusCode HttpCode { get; protected set; }
@@ -37,6 +37,8 @@ public class ApiResponse<A>
 
     public ApiResponse<A> Succeeded(string message = OperationMessage.Done)
     {
+        HttpCode = HttpStatusCode.OK;
+        Messages.Add(message);
         Success = true;
         return this;
     }
@@ -58,14 +60,11 @@ public class ApiResponse<A>
         return this;
     }
 
-    public static explicit operator ApiResponse<A>(OperationResult<A> op)
+    public ApiResponse<A> NotFound()
     {
-        return new ApiResponse<A>()
-        {
-            Response = op.Data,
-            HttpCode = op.HttpCode,
-            Messages = op.Messages,
-            Success = op.Success
-        };
+        Messages.Add(OperationMessage.NotFound);
+        HttpCode = HttpStatusCode.NotFound;
+        Success = false;
+        return this;
     }
 }

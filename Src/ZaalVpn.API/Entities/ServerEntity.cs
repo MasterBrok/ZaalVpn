@@ -2,10 +2,10 @@
 {
     public class ServerEntity : BaseEntity
     {
-        public ServerEntity(string countryId, List<ConfigEntity> configs, bool isActive)
+        protected ServerEntity(){}
+        public ServerEntity(string countryId, bool isActive)
         {
             CountryId = countryId;
-            Configs = configs;
             IsActive = isActive;
         }
 
@@ -13,7 +13,9 @@
         public CountryEntity Country { get; private set; }
         public string CountryId { get; private set; }
 
-        public List<ConfigEntity> Configs { get; private set; }
+        // Image
+
+        public List<ConfigEntity>? Configs { get; private set; }
 
         public bool IsActive { get; private set; }
 
@@ -22,10 +24,18 @@
             CountryId = countryId;
             IsActive = isActive;
         }
+
+        public void AddRangeConfigs(List<ConfigEntity> configs)
+        {
+            Configs = configs;
+        }
+
+
     }
 
     public class ConfigEntity : BaseEntity
     {
+        protected ConfigEntity(){}
         public ConfigEntity(string config, bool isActive, string serverId)
         {
             Config = config;
@@ -49,6 +59,7 @@
     }
     public class CountryEntity : BaseEntity
     {
+        protected CountryEntity(){}
         public CountryEntity(string name)
         {
             Name = name;

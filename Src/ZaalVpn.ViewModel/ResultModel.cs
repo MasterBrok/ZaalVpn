@@ -67,4 +67,13 @@ public class ResultModel
         Success = true;
         return this;
     }
+
+    public ResultModel FailedLogin()
+    {
+        HttpCode = HttpStatusCode.NotFound;
+        Messages.Add(OperationMessage.NotFound);
+        Messages.Add(OperationMessage.PUIncorrect);
+        Success = false;
+        return this;
+    }
 }

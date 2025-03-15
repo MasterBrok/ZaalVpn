@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ZaalVpn.API.Entities;
 
@@ -10,6 +11,12 @@ namespace ZaalVpn.API
         {
 
         }
+
+
+
+        public DbSet<ServerEntity> Servers { get; set; }
+        public DbSet<CountryEntity> Countries { get; set; }
+        public DbSet<ConfigEntity> Configs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,6 +32,10 @@ namespace ZaalVpn.API
             builder.Entity<UserRoleApplication>().ToTable("tbUserRoles");
             builder.Entity<UserTokenApplication>().ToTable("tbUserTokens");
             builder.Entity<GenderEntity>().ToTable("tbGenders");
+
+            builder.Entity<ServerEntity>().ToTable("tbServers","vpn");
+            builder.Entity<ConfigEntity>().ToTable("tbConfigs", "vpn");
+            builder.Entity<CountryEntity>().ToTable("tbCountries", "vpn");
 
 
             builder.Entity<UserApplication>(b =>
@@ -71,6 +82,8 @@ namespace ZaalVpn.API
             });
 
 
+
+
             builder.Entity<ServerEntity>()
                 .HasOne(a => a.Country)
                 .WithMany(a => a.Servers)
@@ -89,22 +102,6 @@ namespace ZaalVpn.API
             //    new()
             //    {
             //        Name = API.Roles.Admin
-            //    },
-            //    new()
-            //    {
-            //        Name = API.Roles.Account
-            //    },
-            //    new()
-            //    {
-            //        Name = API.Roles.AdminFinancial
-            //    },
-            //    new()
-            //    {
-            //        Name = API.Roles.AdminTournament
-            //    },
-            //    new()
-            //    {
-            //        Name = API.Roles.Writer
             //    },
             //    new()
             //    {
@@ -132,35 +129,34 @@ namespace ZaalVpn.API
 
             //var user = new UserApplication()
             //{
-
             //    UserName = "brok",
             //    Email = "brok@gmail.com",
             //    EmailConfirmed = true,
             //    PhoneNumberConfirmed = true,
-            //    GenderId = "1",
-
+            //    GenderId = genders[0].Id,
+            //    ShortId = "111111"
             //};
 
             //user.PasswordHash = new PasswordHasher<UserApplication>().HashPassword(user, "1234567");
 
-            //var roles = new List<UserRoleApplication>()
+            //var usroles = new List<UserRoleApplication>()
             //{
             //    new()
             //    {
             //        UserId = user.Id,
-            //        RoleId = "1"
+            //        RoleId = roles[0].Id
             //    },
             //    new()
             //    {
             //        UserId = user.Id,
-            //        RoleId = "2"
+            //        RoleId = roles[1].Id
             //    },
             //};
 
 
             //builder.Entity<UserApplication>().HasData(user);
 
-            //builder.Entity<UserRoleApplication>().HasData(roles);
+            //builder.Entity<UserRoleApplication>().HasData(usroles);
 
 
         }

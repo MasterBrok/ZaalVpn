@@ -17,4 +17,6 @@ public class OperationMessage
     public const string NotFound = "با این مشخضات پیدا نشد";
     public const string Null = "مقادیر ارسالی/دریافتی خالی است";
     public const string Database = "مشکلی در دیتابیس وجود دارد";
+    public const string PUIncorrect =@"نام کاربری \ رمز اشتباه اشت";
+    public const string NoServers = "سروری وجود ندارد";
 }
