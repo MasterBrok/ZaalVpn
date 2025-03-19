@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ZaalVpn.API.Entities;
@@ -8,15 +9,19 @@ namespace ZaalVpn.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policies.Admin)]
     public class VpnController : ControllerBase
     {
 
         private ResultModel result = new();
         private readonly AppContext _appContext;
 
-        public VpnController(AppContext appContext)
+        private readonly IWebHostEnvironment _host;
+
+        public VpnController(AppContext appContext, IWebHostEnvironment host)
         {
             _appContext = appContext;
+            _host = host;
         }
 
 
@@ -59,6 +64,8 @@ namespace ZaalVpn.API.Controllers
 
 
         [HttpGet("Servers")]
+        [AllowAnonymous]
+        [Authorize(Policies.Admin)]
         public async Task<ApiResponse<List<ServerViewModel>>> Servers()
         {
             var result = new ApiResponse<List<ServerViewModel>>();
@@ -79,9 +86,11 @@ namespace ZaalVpn.API.Controllers
             {
                 Id = s.Id,
                 Country = s.Country.Name,
+                
                 Configs = s.Configs.Select(a => new ConfigViewModel()
                 {
-                    Name = a.Config,
+                    Config = GetFile(a.Config),
+                    City = "unknow",
                     Id = a.Id
                 }).ToList()
             }).ToList();
@@ -90,6 +99,19 @@ namespace ZaalVpn.API.Controllers
             return result.Succeeded();
         }
 
+        private string GetFile(string filename)
+        {
+            // مسیر کامل به فایل
+            var filePath = Path.Combine(_host.ContentRootPath, "wwwroot",  filename);
+
+            // بررسی وجود فایل
+            if (!System.IO.File.Exists(filePath))
+            {
+                return "";
+            }
+
+            return System.IO.File.ReadAllText(filePath);
+        }
 
         [HttpGet("GetConfig")]
         public async Task<ApiResponse<FullConfigViewMode>> GetConfig([FromQuery] string id)

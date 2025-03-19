@@ -17,6 +17,7 @@ namespace ZaalVpn.API
         public DbSet<ServerEntity> Servers { get; set; }
         public DbSet<CountryEntity> Countries { get; set; }
         public DbSet<ConfigEntity> Configs { get; set; }
+        public DbSet<GenderEntity> Genders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,6 +25,13 @@ namespace ZaalVpn.API
 
 
             builder.HasDefaultSchema("auth");
+            builder.Entity<UserApplication>(a =>
+            {
+                a.Ignore(r => r.PhoneNumber);
+                a.Ignore(r => r.PhoneNumberConfirmed);
+                a.Ignore(r => r.TwoFactorEnabled);
+            });
+
             builder.Entity<UserApplication>().ToTable("tbUsers").Property(e => e.Id).ValueGeneratedOnAdd();
             builder.Entity<RoleApplication>().ToTable("tbRoles").Property(e => e.Id).ValueGeneratedOnAdd();
             builder.Entity<RoleClaimApplication>().ToTable("tbRoleClaims").Property(e => e.Id).ValueGeneratedOnAdd();
@@ -97,66 +105,66 @@ namespace ZaalVpn.API
 
 
 
-            //var roles = new List<RoleApplication>()
-            //{
-            //    new()
-            //    {
-            //        Name = API.Roles.Admin
-            //    },
-            //    new()
-            //    {
-            //        Name = API.Roles.User
-            //    },
-            //};
+            var roles = new List<RoleApplication>()
+            {
+                new()
+                {
+                    Name = API.Roles.Admin
+                },
+                new()
+                {
+                    Name = API.Roles.User
+                },
+            };
 
-            //builder.Entity<RoleApplication>()
-            //    .HasData(roles);
+            builder.Entity<RoleApplication>()
+                .HasData(roles);
 
-            //var genders = new List<GenderEntity>()
-            //{
-            //    new("Male"),
-            //    new("Female"),
-            //    new("NonBinary"),
-            //    new("Bigender"),
-            //    new("Agender"),
-            //    new("Feminine"),
-            //    new("Androgynous"),
-            //    new("Other")
-            //};
+            var genders = new List<GenderEntity>()
+            {
+                new("Male"),
+                new("Female"),
+                new("NonBinary"),
+                new("Bigender"),
+                new("Agender"),
+                new("Feminine"),
+                new("Androgynous"),
+                new("Other")
+            };
 
-            //builder.Entity<GenderEntity>()
-            //    .HasData(genders);
+            builder.Entity<GenderEntity>()
+                .HasData(genders);
 
-            //var user = new UserApplication()
-            //{
-            //    UserName = "brok",
-            //    Email = "brok@gmail.com",
-            //    EmailConfirmed = true,
-            //    PhoneNumberConfirmed = true,
-            //    GenderId = genders[0].Id,
-            //    ShortId = "111111"
-            //};
+            var user = new UserApplication()
+            {
+                UserName = "brok",
+                Email = "brok@gmail.com",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true,
+                GenderId = genders[0].Id,
+                ShortId = "111111"
+            };
 
-            //user.PasswordHash = new PasswordHasher<UserApplication>().HashPassword(user, "1234567");
+            user.PasswordHash = new PasswordHasher<UserApplication>().HashPassword(user, "#admin_zaal@com");
 
-            //var usroles = new List<UserRoleApplication>()
-            //{
-            //    new()
-            //    {
-            //        UserId = user.Id,
-            //        RoleId = roles[0].Id
-            //    },
-            //    new()
-            //    {
-            //        UserId = user.Id,
-            //        RoleId = roles[1].Id
-            //    },
-            //};
+            var usroles = new List<UserRoleApplication>()
+            {
+                new()
+                {
+                    UserId = user.Id,
+                    RoleId = roles[0].Id
+                },
+                new()
+                {
+                    UserId = user.Id,
+                    RoleId = roles[1].Id
+                },
+            };
 
 
-            //builder.Entity<UserApplication>().HasData(user);
+            builder.Entity<UserApplication>().HasData(user);
 
-            //builder.Entity<UserRoleApplication>().HasData(usroles);
+            builder.Entity<UserRoleApplication>().HasData(usroles);
 
 
         }

@@ -85,50 +85,50 @@ namespace ZaalVpn.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1ad5a945d7904c609b5c12ffecd69c3b",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8596),
+                            Id = "8322d0eabe3446e1adaa60e90bf1d9c8",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(3218),
                             Gender = "Male"
                         },
                         new
                         {
-                            Id = "1cbd9eb4cf61422cbdfdde046471ef6b",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8659),
+                            Id = "24f1c8d29ec843578f9d44c0ecfd037d",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(3899),
                             Gender = "Female"
                         },
                         new
                         {
-                            Id = "c52dc6e878ec41d989ffdaa1a74e310a",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8676),
+                            Id = "70e096c446dd48d181854a3d42f07ef1",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(3982),
                             Gender = "NonBinary"
                         },
                         new
                         {
-                            Id = "a93641c818ea41bc96ca07318d5a7204",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8688),
+                            Id = "5ad711dfe0284848bf67256c6fe24729",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(4000),
                             Gender = "Bigender"
                         },
                         new
                         {
-                            Id = "5f05feca029045e2827109cd8720e18e",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8700),
+                            Id = "c297e2da90a74adbb15c2c050e715863",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(4014),
                             Gender = "Agender"
                         },
                         new
                         {
-                            Id = "831900da22ed420a85fcc7a50a463473",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8723),
+                            Id = "b03322517ab94376b543df4e4ba36e1f",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(4037),
                             Gender = "Feminine"
                         },
                         new
                         {
-                            Id = "670b3bf1ceb94eb992a85c199d3aeabe",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8748),
+                            Id = "24da78b22d2f409d80285c0f6aa0000c",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(4051),
                             Gender = "Androgynous"
                         },
                         new
                         {
-                            Id = "a3c58dc9b2184bf89041ea3a870eaf4d",
-                            CreateTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(8760),
+                            Id = "e37838f172f6449f880544f7ce97f60c",
+                            CreateTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(4063),
                             Gender = "Other"
                         });
                 });
@@ -163,12 +163,12 @@ namespace ZaalVpn.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2e0fdd41-e6ce-48f5-b614-30b3fdaccc4f",
+                            Id = "54c9bb4b-1693-4818-8a71-fb9b9c825a8c",
                             Name = "Admin"
                         },
                         new
                         {
-                            Id = "9070aa08-14de-4ca1-9d83-ceb6f9be6a27",
+                            Id = "559ecd36-deaf-4c9b-882a-598830d69103",
                             Name = "User"
                         });
                 });
@@ -247,9 +247,6 @@ namespace ZaalVpn.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("LastOnlineAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -267,21 +264,12 @@ namespace ZaalVpn.API.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -304,20 +292,17 @@ namespace ZaalVpn.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ebae9dc1-6b62-407e-8a70-ab8da1e39257",
+                            Id = "cb6b5c8e-e9b4-4956-8149-aba76a6552f7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3631fded-e45b-4576-84a4-470f9fee60c3",
-                            CreationTimeAt = new DateTime(2025, 3, 15, 14, 13, 17, 849, DateTimeKind.Local).AddTicks(9917),
+                            ConcurrencyStamp = "d2c70f2b-6e8f-4db1-b429-af19369df6e4",
+                            CreationTimeAt = new DateTime(2025, 3, 18, 10, 54, 30, 165, DateTimeKind.Local).AddTicks(5610),
                             Email = "brok@gmail.com",
                             EmailConfirmed = true,
-                            GenderId = "1ad5a945d7904c609b5c12ffecd69c3b",
-                            LastOnlineAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GenderId = "8322d0eabe3446e1adaa60e90bf1d9c8",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMKrGYCR2qyGSZAXCEvmdz8vhdq5SqGPuX3tghdYF7vbjoeI1o35Koc/0waf1SFEOQ==",
-                            PhoneNumberConfirmed = true,
-                            SecurityStamp = "e05f6f3f-3073-4dc8-81f6-4258a3f8662e",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHjFU7PNJLLoHEokVux2vyJtpz8gyHfU6EnQQ46PvnsIoWEyCtsTjPqMSAyjmYeyvw==",
+                            SecurityStamp = "5d00bf30-e2a2-447f-96d6-11aedfa4820f",
                             ShortId = "111111",
-                            TwoFactorEnabled = false,
                             UserName = "brok"
                         });
                 });
@@ -386,13 +371,13 @@ namespace ZaalVpn.API.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ebae9dc1-6b62-407e-8a70-ab8da1e39257",
-                            RoleId = "2e0fdd41-e6ce-48f5-b614-30b3fdaccc4f"
+                            UserId = "cb6b5c8e-e9b4-4956-8149-aba76a6552f7",
+                            RoleId = "54c9bb4b-1693-4818-8a71-fb9b9c825a8c"
                         },
                         new
                         {
-                            UserId = "ebae9dc1-6b62-407e-8a70-ab8da1e39257",
-                            RoleId = "9070aa08-14de-4ca1-9d83-ceb6f9be6a27"
+                            UserId = "cb6b5c8e-e9b4-4956-8149-aba76a6552f7",
+                            RoleId = "559ecd36-deaf-4c9b-882a-598830d69103"
                         });
                 });
 

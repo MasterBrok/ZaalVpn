@@ -1,6 +1,8 @@
 ﻿using System.Net;
+using System.Text.Json.Serialization;
 
 namespace ZaalVpn.ViewModel;
+
 public class ResultModel
 {
     public ResultModel(bool success, HttpStatusCode httpCode)
@@ -20,13 +22,14 @@ public class ResultModel
     {
 
     }
-    public bool Success { get; protected set; }
+    public bool Success { get; set; }
     public List<string> Messages { get; set; } = new();
-    public HttpStatusCode HttpCode { get; protected set; }
+    public HttpStatusCode HttpCode { get; set; }
 
 
     public ResultModel Succeeded(params string[]? messages)
     {
+        HttpCode = HttpStatusCode.OK;
         Success = true;
         Messages.AddRange(messages);
         return this;

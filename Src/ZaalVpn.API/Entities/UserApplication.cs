@@ -18,16 +18,17 @@ public class UserApplication : IdentityUser
     public virtual ICollection<UserRoleApplication> Role { get; set; }
 
     public DateTime CreationTimeAt { get; set; }
-    public DateTime LastOnlineAt { get; set; }
+    //public DateTime LastOnlineAt { get; set; }
     public GenderEntity Gender { get; set; }
     public string GenderId { get; set; }
-    
     public string ShortId { get; set; }
 
 
     public UserApplication()
     {
         CreationTimeAt = DateTime.Now;
+        ShortId = Random.Shared.Next(1001, 9999).ToString();
+        
     }
 
 }

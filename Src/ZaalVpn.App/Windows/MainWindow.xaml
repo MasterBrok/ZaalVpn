@@ -1,0 +1,45 @@
+﻿<Window
+    x:Class="ZaalVpn.App.Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cc="clr-namespace:ZaalVpn.App.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:icon="https://github.com/nullsoftware/TrayIcon"
+    xmlns:local="clr-namespace:ZaalVpn.App.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:ZaalVpn.App.ViewModels"
+    Width="380"
+    Height="700"
+    AllowsTransparency="True"
+    Background="Transparent"
+    MouseDown="MainWindow_OnMouseDown"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Border CornerRadius="20">
+        <Grid>
+
+            <Frame x:Name="Frame" NavigationUIVisibility="Hidden" />
+            <StackPanel
+                Margin="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+                <cc:ccButtonIcon
+                    MinWidth="20"
+                    Margin="0"
+                    Click="Hide_OnClick"
+                    ImageSource="../Resources/Icons/minus.png"
+                    Style="{StaticResource ButtonIcon}" />
+                <cc:ccButtonIcon
+                    MinWidth="20"
+                    Margin="0"
+                    Click="Exit_OnClick"
+                    ImageSource="../Resources/Icons/close.png"
+                    Style="{StaticResource ButtonIcon}" />
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

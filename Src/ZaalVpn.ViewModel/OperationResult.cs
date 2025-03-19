@@ -31,8 +31,8 @@ public class ApiResponse<A>
 {
     public List<string> Messages { get; set; } = new();
     public A? Response { get; set; } = default;
-    public bool Success { get; protected set; }
-    public HttpStatusCode HttpCode { get; protected set; }
+    public bool Success { get; set; }
+    public HttpStatusCode HttpCode { get; set; }
 
 
     public ApiResponse<A> Succeeded(string message = OperationMessage.Done)

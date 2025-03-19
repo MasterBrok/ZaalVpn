@@ -1,12 +1,15 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ZaalVpn.API.Entities;
 using ZaalVpn.ViewModel;
 
 namespace ZaalVpn.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policies.Admin)]
     public class CountryController : ControllerBase
     {
 
@@ -39,6 +42,12 @@ namespace ZaalVpn.API.Controllers
         }
 
 
+        [HttpPost("AddAcountry")]
+        public async Task<ResultModel> AddCountry(AddCountryViewModel country)
+        {
+            _appContext.Countries.Add(new CountryEntity(country.Name));
+            return await _appContext.SaveChangesAsync() > 0 ? result.Succeeded() : result.Set(HttpStatusCode.BadRequest).Failed(OperationMessage.NoServers);
+        }
         [HttpDelete("DeleteCountry")]
         public async Task<ResultModel> DeleteCountry(string id)
         {
@@ -58,6 +67,6 @@ namespace ZaalVpn.API.Controllers
                 .ExecuteUpdateAsync(a => a.SetProperty(d => d.Name, country.Name));
             return update > 0 ? result.Succeeded() : result.Failed();
         }
-        
+
     }
 }

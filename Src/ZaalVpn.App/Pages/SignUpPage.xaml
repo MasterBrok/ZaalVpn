@@ -1,0 +1,148 @@
+﻿<Page
+    x:Class="ZaalVpn.App.Pages.SignUpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:customControls="clr-namespace:ZaalVpn.App.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZaalVpn.App.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Border Background="{StaticResource white}" CornerRadius="20">
+        <Grid HorizontalAlignment="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="7*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
+            <Grid VerticalAlignment="Top">
+                <!--<TextBlock
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             FontFamily="{StaticResource MainFont}"
+             FontSize="25"
+             FontWeight="Bold"
+             Text="Welcome to VPNTree!" />
+         <TextBlock
+             Margin="0,20"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             FontFamily="{StaticResource MainFont}"
+             FontSize="19"
+             Text="Sign in to continue" />-->
+                <Ellipse
+                    Width="100"
+                    Height="100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Fill="#9F4BFB">
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="150" RenderingBias="Performance" />
+                    </Ellipse.Effect>
+                </Ellipse>
+
+                <Image
+                    Height="250"
+                    VerticalAlignment="Top"
+                    Source="../Resources/zaalVpn.png"
+                    Stretch="Uniform" />
+            </Grid>
+
+
+            <StackPanel
+                Grid.Row="1"
+                Width="290"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,20,0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontFamily="{StaticResource MainFont}"
+                        FontSize="14"
+                        FontWeight="Regular"
+                        Text="Email" />
+                    <customControls:ccTextBox
+                        x:Name="txtEmail"
+                        HorizontalAlignment="Left"
+                        Placeholder="******" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,20,0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontFamily="{StaticResource MainFont}"
+                        FontSize="14"
+                        FontWeight="Regular"
+                        Text="User Name" />
+                    <customControls:ccTextBox
+                        x:Name="txtUserName"
+                        HorizontalAlignment="Left"
+                        Placeholder="******" />
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,20,0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontFamily="{StaticResource MainFont}"
+                        FontSize="14"
+                        FontWeight="Regular"
+                        Text="Password" />
+                    <customControls:ccTextBox
+                        x:Name="txtPassword"
+                        HorizontalAlignment="Left"
+                        Placeholder="******" />
+
+
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,20,0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontFamily="{StaticResource MainFont}"
+                        FontSize="14"
+                        FontWeight="Regular"
+                        Text="Gender" />
+                    <ComboBox
+                        x:Name="vbGenders"
+                        DisplayMemberPath="Value"
+                        SelectedValuePath="Key" />
+                    <Button Background="Transparent"
+                        Margin="0,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontFamily="{StaticResource MainFont}"
+                        FontSize="12"
+                        Content="Back"
+                        Click="Back_OnClick"
+                        Height="Auto"
+                        Width="Auto"
+                        Foreground="Blue"
+                        FontWeight="Regular">
+                        
+                    </Button>
+
+
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+
+                <Button
+                    x:Name="btnLogin"
+                    VerticalAlignment="Center"
+                    Click="BtnLogin_OnClick"
+                    Content="Create " />
+
+            </StackPanel>
+
+
+        </Grid>
+    </Border>
+</Page>

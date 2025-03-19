@@ -6,23 +6,116 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>zaal.ico</ApplicationIcon>
   </PropertyGroup>
 
+
+
   <ItemGroup>
+    <None Remove="Resources\ConnectTo\1298766_spotify_music_sound_icon.png" />
+    <None Remove="Resources\ConnectTo\icons8-x-250.png" />
+    <None Remove="Resources\ConnectTo\icons8_OnlyFans_240px.png" />
+    <None Remove="Resources\ConnectTo\icons8_steam_240px.png" />
+    <None Remove="Resources\ConnectTo\icons8_telegram_app_240px.png" />
+    <None Remove="Resources\ConnectTo\Instagram.png" />
+    <None Remove="Resources\ConnectTo\netflix.png" />
+    <None Remove="Resources\ConnectTo\Pornhub.png" />
+    <None Remove="Resources\ConnectTo\reddit.png" />
+    <None Remove="Resources\ConnectTo\tiktok.png" />
+    <None Remove="Resources\ConnectTo\youtube.png" />
     <None Remove="Resources\Icons\Back button.png" />
+    <None Remove="Resources\Icons\close.png" />
+    <None Remove="Resources\Icons\icons8_shutdown_208px.png" />
+    <None Remove="Resources\Icons\ic_off2.png" />
     <None Remove="Resources\Icons\Menu icon.png" />
+    <None Remove="Resources\Icons\minus.png" />
     <None Remove="Resources\Icons\Next button.png" />
+    <None Remove="Resources\Icons\off.png" />
+    <None Remove="Resources\Icons\on.png" />
+    <None Remove="Resources\Icons\open.png" />
+    <None Remove="Resources\zaal.png" />
+    <None Remove="Resources\zaalVpn.png" />
+    <None Remove="zaal.ico" />
+ 
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CustomControls\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
-    <Folder Include="Windows\" />
-    <Folder Include="Pages\" />
+    <Resource Include="Resources\ConnectTo\netflix.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\reddit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\youtube.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Countries\flag-Finland.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Countries\flag-France.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Countries\flag-Germany.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\minus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\off.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ZaalVpn.ViewModel\ZaalVpn.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\ConnectTo\1298766_spotify_music_sound_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\icons8-x-250.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\icons8_OnlyFans_240px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\icons8_steam_240px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\icons8_telegram_app_240px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\Instagram.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\Pornhub.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ConnectTo\tiktok.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\icons8_shutdown_208px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\ic_off2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\on.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SF_Pro_Rounded_Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Icons\Back button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -32,6 +125,26 @@
     <Resource Include="Resources\Icons\Next button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\zaal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\zaalVpn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="zaal.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="OpenVpn\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Drivers\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>
