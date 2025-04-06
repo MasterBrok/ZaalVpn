@@ -48,7 +48,7 @@ namespace ZaalVpn.App.Services
 
                 string body = JsonConvert.SerializeObject(model);
                 
-                var message = await _client.PostAsync($"https://brok.topshipping.co/{endPoint}", new StringContent(body,Encoding.UTF8, "application/json"));
+                var message = await _client.PostAsync($".../{endPoint}", new StringContent(body,Encoding.UTF8, "application/json"));
 
                 message.EnsureSuccessStatusCode();
 
@@ -72,7 +72,7 @@ namespace ZaalVpn.App.Services
             if (paramert is not null)
                 paramerters = GenerateQueryString(paramert);
 
-            var result = await _client.GetAsync($"https://brok.topshipping.co/{endPoint}");
+            var result = await _client.GetAsync($".../{endPoint}");
             result.EnsureSuccessStatusCode();
             if (!result.IsSuccessStatusCode)
                 return response.Set(HttpStatusCode.BadRequest).FailedErrors("Request is failed");
